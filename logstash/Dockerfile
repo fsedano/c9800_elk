@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y logstash
 RUN apt-get install -y inetutils-ping
 COPY logstash_data/simple.conf /root/
 COPY logstash_data/apache.conf /root/
-COPY logstash_data/apache-access.log /root
 COPY logstash_data/apache-tiny.log /root/
-
-
-
+COPY logstash_data/entrypoint.sh /app/
+COPY logstash/logstash_data/example.sh /root/
+ENTRYPOINT [ "sh", "/app/entrypoint.sh" ]
+#ENTRYPOINT [ "/usr/share/logstash/bin/logstash", "-f", "/root/simple.conf" ]

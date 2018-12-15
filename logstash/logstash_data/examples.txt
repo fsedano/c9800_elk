@@ -1,0 +1,28 @@
+/usr/share/logstash/bin/logstash -f /root/simple.conf
+
+91.117.186.135 - - [18/Jan/2018:15:32:08 +0000] "POST /?_task=mail&_action=refresh HTTP/1.1" 302 248 "http://webmail.autocrew.es/?_task=mail&_refresh=1&_mbox=INBOX" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"
+%{IP:ip} - - \[%{FRANDATE} %{NUMBER:tz}\] %{QUOTEDSTRING:mensaje}
+FRANDATE %{MONTHDAY:d}[./-]%{MONTH:m}[./-]%{YEAR:y}:%{TIME:h}
+
+
+
+
+91.117.186.135 - - [18/Jan/2018:15:32:08 +0000] "POST /?_task=mail&_action=refresh HTTP/1.1" 302 248 "http://webmail.autocrew.es/?_task=mail&_refresh=1&_mbox=INBOX" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"
+91.117.186.135 - - [20/Jan/2018:15:32:08 +0000] "POST /?_task=mail&_action=refresh HTTP/1.1" 302 248 "http://webmail.autocrew.es/?_task=mail&_refresh=1&_mbox=INBOX" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"
+91.117.186.135 - - [30/Jan/2018:15:32:08 +0000] "POST /?_task=mail&_action=refresh HTTP/1.1" 302 248 "http://webmail.autocrew.es/?_task=mail&_refresh=1&_mbox=INBOX" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"
+91.117.186.135 - - [2/Jan/2018:15:32:08 +0000] "POST /?_task=mail&_action=refresh HTTP/1.1" 302 248 "http://webmail.autocrew.es/?_task=mail&_refresh=1&_mbox=INBOX" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"
+91.117.186.135 - - [1/Jan/2018:15:32:08 +0000] "POST /?_task=mail&_action=refresh HTTP/1.1" 302 248 "http://webmail.autocrew.es/?_task=mail&_refresh=1&_mbox=INBOX" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"
+
+
+PUT logstash-2018.12.15
+{
+    "mappings" : {
+      "doc" : {
+        "properties" : {
+          "d" : {
+            "type" : "integer"
+          }
+        }
+      }
+    }
+}

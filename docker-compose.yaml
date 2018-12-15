@@ -10,24 +10,15 @@ services:
     environment:
       - MAX_MAP_COUNT=262144
   logstash:
-    #image: docker.elastic.co/logstash/logstash:6.5.3
     build: logstash
-    entrypoint: /app/entrypoint.sh
     ports:
       - "9600:9600"
     volumes:
       - log_pipeline:/usr/share/logstash/pipeline
-      - v1:/app
-      - logs:/usr/share/logstash/logs
-  util:
-    image: linux-dev
-    volumes:
-      - log_pipeline:/usr/share/logstash/pipeline
-      - v1:/app
-      - logs:/applogs
-    entrypoint: /app/entrypoint.sh
+      - log_app:/app
+      - log_logs:/usr/share/logstash/logs
 
 volumes:
   log_pipeline:
-  v1:
-  logs:
+  log_app:
+  log_logs:
