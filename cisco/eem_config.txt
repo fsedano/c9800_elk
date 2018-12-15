@@ -1,0 +1,7 @@
+event manager directory user policy "bootflash:/user_eem"
+!! Copy collect_wireless_logs.tcl to bootflash:/user_eem directory
+event manager policy collect_wireless_logs.tcl type user
+event manager applet WirelessLogs
+ event timer watchdog time 60 maxrun 200
+ action 1.0 cli command "enable"
+ action 2.0 cli command "event manager run collect_wireless_logs.tcl"

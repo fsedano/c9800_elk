@@ -1,0 +1,33 @@
+version: '2'
+services:
+
+  elasticsearch:
+    image: sebp/elk
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5044:5044"
+    environment:
+      - MAX_MAP_COUNT=262144
+  logstash:
+    #image: docker.elastic.co/logstash/logstash:6.5.3
+    build: logstash
+    entrypoint: /app/entrypoint.sh
+    ports:
+      - "9600:9600"
+    volumes:
+      - log_pipeline:/usr/share/logstash/pipeline
+      - v1:/app
+      - logs:/usr/share/logstash/logs
+  util:
+    image: linux-dev
+    volumes:
+      - log_pipeline:/usr/share/logstash/pipeline
+      - v1:/app
+      - logs:/applogs
+    entrypoint: /app/entrypoint.sh
+
+volumes:
+  log_pipeline:
+  v1:
+  logs:
