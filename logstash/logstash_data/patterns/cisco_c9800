@@ -1,0 +1,8 @@
+CISCO_DATE %{DATE} %{HOUR}:%{MINUTE}:%{SECOND}
+CISCO_PROCESS_NAME \{[a-z_A-Z0-9-]+\}
+INSTANCE_ID \{[0-9]+\}
+LIB \[[a-zA-Z-]+\]
+PID \[%{NUMBER}\]
+LOG_LEVEL \(%{WORD}\)
+WORD_ [a-z_]+
+CAPWAP_MSG Session-IP: %{IP:ap_ip}\[%{NUMBER}\] Mac: %{MAC:ap_mac} Capwap message received, type: %{WORD_:msg_type}

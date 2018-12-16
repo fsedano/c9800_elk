@@ -26,3 +26,18 @@ PUT logstash-2018.12.15
       }
     }
 }
+
+----
+
+2018/12/15 14:06:57.150 {wncd_x_R0-0}{1}: [capwapac-smgr-sess] [25547]: (info): Session-IP: 9.9.71.204[62277] Mac: f44e.0551.19a0 Capwap message received, type: wtp_event_request
+
+%{CISCO_DATE} %{CISCO_PROCESS_NAME:process}%{INSTANCE_ID:instance}: %{LIB:lib} %{PID:pid}: %{LOG_LEVEL}: %{CAPWAP_MSG:mensaje}
+
+CISCO_DATE %{DATE:date} %{HOUR:hour}:%{MINUTE:minute}:%{SECOND:second}
+CISCO_PROCESS_NAME \{[a-z_A-Z0-9-]+\}
+INSTANCE_ID \{[0-9]+\}
+LIB \[[a-zA-Z-]+\]
+PID \[%{NUMBER}\]
+LOG_LEVEL \(%{WORD}\)
+WORD_ [a-z_]+
+CAPWAP_MSG Session-IP: %{IP:ap_ip}\[%{NUMBER}\] Mac: %{MAC:ap_mac} Capwap message received, type: %{WORD_:msg_type}
