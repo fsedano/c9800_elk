@@ -9,6 +9,10 @@ services:
       - "5044:5044"
     environment:
       - MAX_MAP_COUNT=262144
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
   logstash:
     build: logstash
     ports:
