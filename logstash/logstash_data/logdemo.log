@@ -1,0 +1,4 @@
+2019/01/12 14:14:20.000 {wncd_x_R0-0}{1}: [client-orch-state] [32070]: (note): MAC: 80b0.3db3.8e92  Client state transition: STATE_1 -> STATE_2
+2019/01/12 14:14:34.000 {wncd_x_R0-0}{1}: [client-orch-state] [32070]: (note): MAC: 80b0.3db3.8e92  Client state transition: STATE_2 -> STATE_3
+2019/01/12 14:14:54.000 {wncd_x_R0-0}{1}: [client-orch-state] [32070]: (note): MAC: 80b0.3db3.8e92  Client state transition: STATE_3 -> STATE_4
+

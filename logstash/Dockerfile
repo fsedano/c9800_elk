@@ -18,4 +18,4 @@ COPY logstash_data/traces_*.log /root/data/
 COPY logstash_data/patterns/* /root/patterns/
 
 ENTRYPOINT [ "sh", "/app/entrypoint.sh" ]
-#ENTRYPOINT [ "/usr/share/logstash/bin/logstash", "-f", "/root/simple.conf" ]
+#ENTRYPOINT [ "/usr/share/logstash/bin/logstash", "-f", "/root/simple.conf", "-w", "1"]

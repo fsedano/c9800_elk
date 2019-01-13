@@ -21,6 +21,7 @@ services:
       - log_pipeline:/usr/share/logstash/pipeline
       - log_app:/app
       - log_logs:/usr/share/logstash/logs
+      - ./logstash:/logstash_host
 
 volumes:
   log_pipeline:
