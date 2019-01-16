@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "7d036d50-1977-11e9-9d5f-0f2019bef898",
+    "_type": "visualization",
+    "_source": {
+      "title": "shapes-1",
+      "visState": "{\"title\":\"shapes-1\",\"type\":\"vega\",\"params\":{\"spec\":\"{\\n  \\\"$schema\\\": \\\"https://vega.github.io/schema/vega-lite/v2.json\\\",\\n  \\\"title\\\": \\\"Event counts from all indexes\\\",\\n  \\\"data\\\": {\\n    \\\"url\\\": {\\n      \\\"%context%\\\": true,\\n      \\\"%timefield%\\\": \\\"@timestamp\\\",\\n      \\\"index\\\": \\\"_all\\\",\\n    },\\n    \\\"format\\\": {\\\"property\\\": \\\"hits.hits\\\"}\\n  },\\n\\n  transform: [\\n    {\\n    calculate: \\\"toDate(datum._source['@timestamp'])\\\"\\n    as: \\\"time\\\"\\n    }\\n  ]\\n  \\n  \\\"mark\\\": \\\"point\\\",\\n  \\\"encoding\\\": {\\n    \\\"x\\\": {\\n      \\\"field\\\": \\\"time\\\",\\n      \\\"type\\\": \\\"temporal\\\",\\n      \\\"axis\\\": {\\\"title\\\": false}\\n    },\\n\\n    \\\"y\\\": {\\n      \\\"field\\\": \\\"_source.current_ap\\\",\\n      \\\"type\\\": \\\"ordinal\\\"\\n    }\\n    \\\"tooltip\\\": [\\n      {\\\"field\\\": \\\"_source.event_type\\\", \\\"type\\\": \\\"nominal\\\"}\\n      ]\\n    \\\"shape\\\": {\\n      \\\"field\\\": \\\"_source.event_type\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'event type'}\\n    }\\n    \\\"color\\\": {\\n      \\\"field\\\": \\\"_source.event_type\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'event type'}\\n    }\\n\\n    \\\"size\\\": { value: 1000 }\\n  }\\n}\"},\"aggs\":[]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  }
+]

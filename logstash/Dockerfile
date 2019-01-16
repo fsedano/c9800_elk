@@ -14,8 +14,8 @@ COPY logstash_data/*.conf /root/
 COPY logstash_data/apache-tiny.log /root/
 COPY logstash_data/entrypoint.sh /app/
 COPY logstash_data/examples.txt /root/
-COPY logstash_data/traces_*.log /root/data/
+COPY logstash_data/*.log /root/data/
 COPY logstash_data/patterns/* /root/patterns/
 
-ENTRYPOINT [ "sh", "/app/entrypoint.sh" ]
-#ENTRYPOINT [ "/usr/share/logstash/bin/logstash", "-f", "/root/simple.conf", "-w", "1"]
+#ENTRYPOINT [ "sh", "/app/entrypoint.sh" ]
+ENTRYPOINT [ "/usr/share/logstash/bin/logstash", "-f", "/root/custom.conf", "-w", "1"]
