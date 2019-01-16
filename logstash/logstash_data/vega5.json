@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "e68c63d0-1927-11e9-b903-e708106dd66a",
+    "_type": "visualization",
+    "_source": {
+      "title": "vega5",
+      "visState": "{\"title\":\"vega5\",\"type\":\"vega\",\"params\":{\"spec\":\"{\\n  $schema: https://vega.github.io/schema/vega-lite/v2.json\\n  data: {\\n  url: {\\n  \\n    index: \\\"logstash-2019.01.*\\\"\\n    %context%: true\\n    %timefield%: @timestamp\\n    \\n    \\n  }\\n  format: {property: \\\"hits.hits\\\"}\\n  }\\n  \\n  transform: [\\n    { calculate: \\\"datum._source['scaled_time']-datum._source['event_duration']\\\" as: \\\"start_time\\\"\\n    }\\n  ]\\n  \\n  mark: {\\\"type\\\":\\\"rect\\\"}\\n  encoding: {\\n    \\\"x\\\": {field: \\\"start_time\\\", type: \\\"quantitative\\\"}\\n    \\\"x2\\\": {field: \\\"_source.scaled_time\\\", type: \\\"quantitative\\\"}\\n    \\\"y\\\": {field: \\\"_source.current_ap\\\", type: \\\"ordinal\\\"}\\n  \\n  }\\n}\"},\"aggs\":[]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"kuery\",\"query\":\"aa\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "b5285f30-16be-11e9-8bf0-694d41e1c2b0",
+    "_type": "visualization",
+    "_source": {
+      "title": "manual_data",
+      "visState": "{\"title\":\"manual_data\",\"type\":\"vega\",\"params\":{\"spec\":\"{\\n  $schema: https://vega.github.io/schema/vega-lite/v2.json\\n  data: {\\n    values: [\\n      {a: \\\"10010\\\", b: \\\"10011\\\", c: \\\"RUN\\\"},\\n      {a: \\\"10011\\\", b: \\\"10013\\\", c: \\\"DELETE\\\"},\\n      {a: \\\"10013\\\", b: \\\"10017\\\", c: \\\"ANOTHER\\\"},\\n      {a: \\\"10017\\\", b: \\\"10024\\\", c: \\\"RUN\\\"},\\n    ]\\n  }\\n  mark: {\\\"type\\\":\\\"rect\\\"}\\n  encoding: {\\n    \\\"x\\\": {field: \\\"a\\\", type: \\\"quantitative\\\", \\\"scale\\\": {\\\"domain\\\": [10000, 10030]}}\\n    \\\"x2\\\": {field: \\\"b\\\", type: \\\"quantitative\\\"}\\n    \\\"y\\\": {field: \\\"c\\\", type: \\\"ordinal\\\"}\\n  \\n  }\\n}\"},\"aggs\":[]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+      }
+    }
+  }
+]

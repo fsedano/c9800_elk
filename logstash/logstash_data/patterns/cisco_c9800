@@ -4,6 +4,7 @@ INSTANCE_ID \{[0-9]+\}
 LIB \[[a-zA-Z-]+\]
 PID \[%{NUMBER}\]
 LOG_LEVEL \(%{WORD}\)
-WORD_ [a-z_A-Z0-9]+
+WORD_ [a-z_A-Z0-9\-]+
 CAPWAP_MSG Session-IP: %{IP:ap_ip}\[%{NUMBER}\] Mac: %{MAC:ap_mac} Capwap message received, type: %{WORD_:msg_type}
 CLIENT_STATE_TRANSITION_MSG MAC: %{MAC:client_mac}  Client state transition: %{WORD_:from_state} -> %{WORD_:to_state}
+CLIENT_TRACE_HDR %{CISCO_DATE:event_date} %{CISCO_PROCESS_NAME:process}%{INSTANCE_ID:instance}: %{LIB:lib} %{PID:pid}: UUID: %{WORD_:uuid}, ra: %{NUMBER}, TID: %{NUMBER} %{LOG_LEVEL}:

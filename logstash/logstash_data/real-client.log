@@ -1,0 +1,45 @@
+Join on AP2
+
+2019/01/11 14:14:12.634 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ed42, ra: 5, TID: 0 (note): MAC: e88e.0000.0001  Association received. BSSID dada.0000.030f, old BSSID 0000.0000.0000, WLAN 4, Slot 1 AP dada.0000.0300, SIM-AP-2
+2019/01/11 14:14:12.634 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ed42, ra: 5, TID: 0 (debug): MAC: e88e.0000.0001  Received Dot11 association request. Processing started,SSID: ga_open_air, Policy profile: export_policy, AP Name: SIM-AP-2, Ap Mac Address: dada.0000.0300 BSSID MAC0000.0000.0000 wlan ID: 4
+ 
+-> Client learns an IP address
+ 
+2019/01/11 14:14:15.660 {wncd_x_R0-0}{1}: [client-iplearn] [20762]: UUID: 100000003ed4a, ra: 5, TID: 0 (note): MAC: e88e.0000.0001  Client IP learn successful. Method: DHCP IP: 100.0.100.24
+ 
+-> Client goes to RUN state
+ 
+2019/01/11 14:14:15.661 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ed4a, ra: 5, TID: 0 (debug): MAC: e88e.0000.0001  process client run. Inside client RUN state
+ 
+ 
+-> Client roams to SIM-AP-1
+2019/01/11 14:14:35.283 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ed69, ra: 5, TID: 0 (note): MAC: e88e.0000.0001  Re-Association received. BSSID dada.0000.020f, old BSSID dada.0000.030f, WLAN 4, Slot 1 AP dada.0000.0200, SIM-AP-1
+2019/01/11 14:14:35.285 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ed69, ra: 5, TID: 0 (debug): MAC: e88e.0000.0001  Process client intra instance roam. Processing assoc response from DOT11 FSM on roam event status: CO_CLIENT_ASSOC_STATUS_SUCCESS , old BSSID :dada.0000.030f , new BSSID :dada.0000.020f
+ 
+Client goes to RUN state
+ 
+2019/01/11 14:14:35.283 {wncd_x_R0-0}{1}: [client-orch-state] [20762]: UUID: 100000003ed69, ra: 5, TID: 0 (note): MAC: e88e.0000.0001  Client state transition: S_CO_RUN -> S_CO_RUN
+ 
+ 
+Client Roams back to SIM-AP-2
+ 
+2019/01/11 14:15:54.798 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ee19, ra: 5, TID: 0 (note): MAC: e88e.0000.0001  Re-Association received. BSSID dada.0000.030f, old BSSID dada.0000.020f, WLAN 4, Slot 1 AP dada.0000.0300, SIM-AP-2
+ 
+ 
+2019/01/11 14:15:54.800 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ee19, ra: 5, TID: 0 (debug): MAC: e88e.0000.0001  Process client intra instance roam. Processing assoc response from DOT11 FSM on roam event status: CO_CLIENT_ASSOC_STATUS_SUCCESS , old BSSID :dada.0000.020f , new BSSID :dada.0000.030f
+ 
+ 
+Client goes away:
+ 
+2019/01/11 14:16:24.981 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ee4a, ra: 5, TID: 0 (note): MAC: e88e.0000.0001  Client delete initiated. Reason: CO_CLIENT_DELETE_REASON_AP_DELETE_MN, fsm-state transition ??? 64|67|6c|13|17|18|25|30|3f|40|42|44|48|53|55|64|67|6c|13|17|18|25|30|3f|40|42|44|48|53|55|64|7d|
+ 
+Client comes back on SIM-AP-2
+2019/01/11 14:16:28.692 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ee53, ra: 5, TID: 0 (note): MAC: e88e.0000.0001  Association received. BSSID dada.0000.030f, old BSSID 0000.0000.0000, WLAN 4, Slot 1 AP dada.0000.0300, SIM-AP-2
+ 
+Client learns an IP Address
+ 
+2019/01/11 14:16:31.718 {wncd_x_R0-0}{1}: [client-iplearn] [20762]: UUID: 100000003ee58, ra: 5, TID: 0 (note): MAC: e88e.0000.0001  Client IP learn successful. Method: DHCP IP: 100.0.100.24
+ 
+Client goes to RUN state
+2019/01/11 14:16:31.719 {wncd_x_R0-0}{1}: [client-orch-sm] [20762]: UUID: 100000003ee58, ra: 5, TID: 0 (debug): MAC: e88e.0000.0001  process client run. Inside client RUN state
+ 
