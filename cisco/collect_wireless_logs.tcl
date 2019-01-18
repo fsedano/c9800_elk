@@ -4,7 +4,7 @@ namespace import ::cisco::eem::*
 namespace import ::cisco::lib::*
 
 
-set DEBUG_FLAG         0
+set DEBUG_FLAG         1
 
 # ### Put debug logs to syslog when debug flag is set
 proc debug {str} {
@@ -46,31 +46,8 @@ proc execute_command_list {sess cmds} {
 
 # ### Generate unique file name based on system clock
 proc generate_file_name {cli} {
-    upvar $cli cli_sess
+    set now [clock seconds]
 
-    set cmd "show clock"
-    if {[catch {cli_exec $cli_sess(fd) $cmd} sh_cl_out]} {
-        p_error "Error while executing command: '$cmd', Result:\n$sh_cl_out"
-        return ""
-    }
-    debug "Command: '$cmd', Result:\n$sh_cl_out"
-
-    # Split output by CR, Last line is always device hostname trim it
-    set split_list [lrange [split $sh_cl_out "\n\r"] 0 end-1]
-    foreach ele $split_list {
-        set ele [string trim $ele " \r\n"]
-        if {[string length $ele] > 0} {
-            set clock $ele
-            break
-        }
-    }
-    debug "Clock time: $clock"
-
-    set cl_out [join [regexp -inline -all -- {\S+} $clock] "_"]
-    regsub -all ":" $cl_out "" cl_out
-    set file "wncd_$cl_out.log"
-
-    return $file
 }
 
 
@@ -96,17 +73,46 @@ proc cli_session_start {} {
 }
 
 
-proc stop_cndtn_and_rotate_logs {cli} {
+proc run_cmd {cli cmd_list} {
 	upvar $cli cli_sess
-	set cmd_list {}
-	set file [generate_file_name cli_sess]
-	lappend cmd_list "show logging process wncd start marker m1 | redirect tftp://9.9.71.130/traces_$file"
-    lappend cmd_list "set platform software filter-trace slot c a r wncd marker m1"
 	array set ret [execute_command_list cli_sess cmd_list]
 }
 
+proc get_trace_timestamp {} {
+     set now [clock seconds]
+     set lastrun [get_lastrun]
+
+     set x [clock format $now -format "%Y/%m/%d %H:%M:%S.000"]
+     set y [clock format $lastrun -format "%Y/%m/%d %H:%M:%S.000"]
+    return "start timestamp \"$y\" end timestamp \"$x\""
+}
+
+proc set_lastrun {} {
+	set fd [open "a.txt" w]
+        set now [clock seconds]
+        puts $fd $now
+        close $fd
+}
+
+proc get_lastrun {} {
+    if [catch {set fd [open "a.txt" r]} errmsg] {
+	set lastrun 1 
+    } else {
+        set lastrun [read $fd]
+        close $fd
+    }
+    return $lastrun
+}
+
 ##### MAIN #####
-
 array set cli_sess [cli_session_start]
-set ret [stop_cndtn_and_rotate_logs cli_sess]
 
+## Get latest timestamp
+set timestamp_str [get_trace_timestamp]
+
+set cmds {}
+set filename [clock seconds]
+lappend cmds "show logging profile wireless $timestamp_str | redirect tftp://9.9.71.130/traces_$filename.log"
+
+set ret [run_cmd cli_sess $cmds]
+set_lastrun
