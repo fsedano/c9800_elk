@@ -4,7 +4,7 @@ namespace import ::cisco::eem::*
 namespace import ::cisco::lib::*
 
 
-set DEBUG_FLAG         1
+set DEBUG_FLAG         0
 
 # ### Put debug logs to syslog when debug flag is set
 proc debug {str} {
@@ -79,23 +79,20 @@ proc run_cmd {cli cmd_list} {
 }
 
 proc get_trace_timestamp {} {
-     set now [clock seconds]
      set lastrun [get_lastrun]
-
-     set x [clock format $now -format "%Y/%m/%d %H:%M:%S.000"]
-     set y [clock format $lastrun -format "%Y/%m/%d %H:%M:%S.000"]
-    return "start timestamp \"$y\" end timestamp \"$x\""
+     set lastrun_formatted [clock format $lastrun -format "%Y/%m/%d %H:%M:%S.000"]
+    return "start timestamp \"$lastrun_formatted\""
 }
 
 proc set_lastrun {} {
-	set fd [open "a.txt" w]
+	set fd [open "lastrun.txt" w]
         set now [clock seconds]
         puts $fd $now
         close $fd
 }
 
 proc get_lastrun {} {
-    if [catch {set fd [open "a.txt" r]} errmsg] {
+    if [catch {set fd [open "lastrun.txt" r]} errmsg] {
 	set lastrun 1 
     } else {
         set lastrun [read $fd]
