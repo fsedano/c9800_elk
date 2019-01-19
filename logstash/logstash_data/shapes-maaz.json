@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "2815f680-1a73-11e9-9aa6-ad54477f1476",
+    "_type": "visualization",
+    "_source": {
+      "title": "shapes-maaz1",
+      "visState": "{\"title\":\"shapes-maaz1\",\"type\":\"vega\",\"params\":{\"spec\":\"{\\n  \\\"$schema\\\": \\\"https://vega.github.io/schema/vega-lite/v2.json\\\",\\n  \\\"title\\\": \\\"Event counts from all indexes\\\",\\n  \\\"data\\\": {\\n    \\\"url\\\": {\\n      \\\"%context%\\\": true,\\n      \\\"%timefield%\\\": \\\"@timestamp\\\",\\n      \\\"index\\\": \\\"_all\\\",\\n    },\\n    \\\"format\\\": {\\\"property\\\": \\\"hits.hits\\\"}\\n  },\\n\\n  transform: [\\n    {\\n    calculate: \\\"toDate(datum._source['@timestamp'])\\\"\\n    as: \\\"time\\\"\\n    }\\n  ]\\n  \\n  \\\"mark\\\": {\\n    \\\"type\\\": \\\"trail\\\",\\n    \\\"point\\\": {\\n      \\\"filled\\\": false,\\n      \\\"size\\\": 1000\\n    },\\n    \\\"interpolate\\\":\\\"step-before\\\"\\n  },\\n  \\\"encoding\\\": {\\n    \\\"x\\\": {\\n      \\\"timeUnit\\\": \\\"yearmonthdatehoursminutesecondsmilliseconds\\\",\\n      \\\"field\\\": \\\"time\\\",\\n      \\\"type\\\": \\\"temporal\\\",\\n      \\\"axis\\\": {\\\"title\\\": false,\\n      \\\"labelAngle\\\":-45}\\n    },\\n\\n    \\\"y\\\": {\\n      \\\"field\\\": \\\"_source.current_ap\\\",\\n      \\\"type\\\": \\\"ordinal\\\"\\n    }\\n    \\\"tooltip\\\": [\\n      {\\\"field\\\": \\\"_source.event_type\\\", \\\"type\\\": \\\"nominal\\\"}\\n      ]\\n    \\\"shape\\\": {\\n      \\\"field\\\": \\\"_source.event_type\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'event type'}\\n    }\\n    \\\"color\\\": {\\n      \\\"field\\\": \\\"_source.client_mac\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'Client MAC'}\\n    }\\n  }\\n}\"},\"aggs\":[]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    }
+  }
+]
