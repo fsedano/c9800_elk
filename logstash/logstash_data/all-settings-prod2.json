@@ -1,0 +1,121 @@
+[
+  {
+    "_id": "7d036d50-1977-11e9-9d5f-0f2019bef898",
+    "_type": "visualization",
+    "_source": {
+      "title": "shapes-1",
+      "visState": "{\"title\":\"shapes-1\",\"type\":\"vega\",\"params\":{\"spec\":\"{\\n  \\\"$schema\\\": \\\"https://vega.github.io/schema/vega-lite/v2.json\\\",\\n  \\\"title\\\": \\\"Event counts from all indexes\\\",\\n  \\\"data\\\": {\\n    \\\"url\\\": {\\n      \\\"%context%\\\": true,\\n      \\\"%timefield%\\\": \\\"@timestamp\\\",\\n      \\\"index\\\": \\\"_all\\\",\\n    },\\n    \\\"format\\\": {\\\"property\\\": \\\"hits.hits\\\"}\\n  },\\n\\n  transform: [\\n    {\\n    calculate: \\\"toDate(datum._source['@timestamp'])\\\"\\n    as: \\\"time\\\"\\n    }\\n  ]\\n  \\n  \\\"mark\\\": \\\"point\\\",\\n  \\\"encoding\\\": {\\n    \\\"x\\\": {\\n      \\\"field\\\": \\\"time\\\",\\n      \\\"type\\\": \\\"temporal\\\",\\n      \\\"axis\\\": {\\\"title\\\": false}\\n    },\\n\\n    \\\"y\\\": {\\n      \\\"field\\\": \\\"_source.current_ap\\\",\\n      \\\"type\\\": \\\"ordinal\\\"\\n    }\\n    \\\"tooltip\\\": [\\n      {\\\"field\\\": \\\"_source.event_type\\\", \\\"type\\\": \\\"nominal\\\"},\\n      {\\\"field\\\": \\\"_source.client_ip\\\", \\\"type\\\": \\\"nominal\\\"}\\n      ]\\n    \\\"shape\\\": {\\n      \\\"field\\\": \\\"_source.event_type\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'event type'}\\n    }\\n    \\\"color\\\": {\\n      \\\"field\\\": \\\"_source.event_type\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'event type'}\\n    }\\n\\n    \\\"size\\\": { value: 1000 }\\n  }\\n}\"},\"aggs\":[]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "a0fabd00-1c27-11e9-af24-930ed507d598",
+    "_type": "visualization",
+    "_source": {
+      "title": "Client vs AP",
+      "visState": "{\"title\":\"Client vs AP\",\"type\":\"heatmap\",\"params\":{\"type\":\"heatmap\",\"addTooltip\":true,\"addLegend\":true,\"enableHover\":true,\"legendPosition\":\"right\",\"times\":[],\"colorsNumber\":4,\"colorSchema\":\"Reds\",\"setColorRange\":false,\"colorsRange\":[],\"invertColors\":false,\"percentageMode\":false,\"valueAxes\":[{\"show\":false,\"id\":\"ValueAxis-1\",\"type\":\"value\",\"scale\":{\"type\":\"linear\",\"defaultYExtents\":false},\"labels\":{\"show\":false,\"rotate\":0,\"overwriteColor\":false,\"color\":\"#555\"}}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"client_mac.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"ap_name.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"defaultColors\":{\"0 - 9\":\"rgb(255,245,240)\",\"9 - 18\":\"rgb(252,187,161)\",\"18 - 27\":\"rgb(251,106,74)\",\"27 - 35\":\"rgb(203,24,29)\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"9a16bb30-1c16-11e9-af24-930ed507d598\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "cf97fc50-1c26-11e9-af24-930ed507d598",
+    "_type": "visualization",
+    "_source": {
+      "title": "Events by client",
+      "visState": "{\"title\":\"Events by client\",\"type\":\"pie\",\"params\":{\"type\":\"pie\",\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"bottom\",\"isDonut\":true,\"labels\":{\"show\":true,\"values\":true,\"last_level\":true,\"truncate\":100}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"client_mac.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"event_type.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"9a16bb30-1c16-11e9-af24-930ed507d598\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "9a16bb30-1c16-11e9-af24-930ed507d598",
+    "_type": "index-pattern",
+    "_source": {
+      "title": "lo*",
+      "timeFieldName": "@timestamp",
+      "fields": "[{\"name\":\"@timestamp\",\"type\":\"date\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"@version\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"_id\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":false},{\"name\":\"_index\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":false},{\"name\":\"_score\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":false,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"_source\",\"type\":\"_source\",\"count\":0,\"scripted\":false,\"searchable\":false,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"_type\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":false},{\"name\":\"ap_mac_slot\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"ap_mac_slot.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"ap_name\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"ap_name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"bssid\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"bssid.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"client_ip\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"client_ip.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"client_mac\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"client_mac.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"current_ap\",\"type\":\"string\",\"count\":1,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"current_ap.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"event_date\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"event_date.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"event_timestamp_unix\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"event_type\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"event_type.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"geoip.ip\",\"type\":\"ip\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"geoip.latitude\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"geoip.location\",\"type\":\"geo_point\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"geoip.longitude\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"host\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"host.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"instance\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"instance.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"lib\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"lib.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"message\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"method\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"method.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"old_bssid\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"old_bssid.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"path\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"path.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"pid\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"pid.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"process\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"process.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"reason\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"reason.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"slot\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"slot.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"wlan_id\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"wlan_id.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true}]"
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    },
+    "_migrationVersion": {
+      "index-pattern": "6.5.0"
+    }
+  },
+  {
+    "_id": "bdf97aa0-1c17-11e9-af24-930ed507d598",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Main Dashboard",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"embeddableConfig\":{},\"gridData\":{\"x\":0,\"y\":0,\"w\":48,\"h\":13,\"i\":\"2\"},\"id\":\"2815f680-1a73-11e9-9aa6-ad54477f1476\",\"panelIndex\":\"2\",\"type\":\"visualization\",\"version\":\"6.5.1\"},{\"embeddableConfig\":{\"vis\":{\"legendOpen\":true}},\"gridData\":{\"x\":0,\"y\":13,\"w\":29,\"h\":15,\"i\":\"3\"},\"id\":\"cf97fc50-1c26-11e9-af24-930ed507d598\",\"panelIndex\":\"3\",\"type\":\"visualization\",\"version\":\"6.5.1\"},{\"embeddableConfig\":{},\"gridData\":{\"x\":29,\"y\":13,\"w\":19,\"h\":15,\"i\":\"4\"},\"id\":\"a0fabd00-1c27-11e9-af24-930ed507d598\",\"panelIndex\":\"4\",\"type\":\"visualization\",\"version\":\"6.5.1\"},{\"gridData\":{\"x\":0,\"y\":28,\"w\":48,\"h\":21,\"i\":\"5\"},\"version\":\"6.5.1\",\"panelIndex\":\"5\",\"type\":\"visualization\",\"id\":\"acfdb0b0-1c4c-11e9-af24-930ed507d598\",\"embeddableConfig\":{}}]",
+      "optionsJSON": "{\"darkTheme\":false,\"hidePanelTitles\":false,\"useMargins\":true}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":true,\"index\":\"9a16bb30-1c16-11e9-af24-930ed507d598\",\"key\":\"client_mac\",\"negate\":false,\"params\":{\"query\":\"80b0.3db3.8e92\",\"type\":\"phrase\"},\"type\":\"phrase\",\"value\":\"80b0.3db3.8e92\"},\"query\":{\"match\":{\"client_mac\":{\"query\":\"80b0.3db3.8e92\",\"type\":\"phrase\"}}}},{\"$state\":{\"store\":\"appState\"},\"exists\":{\"field\":\"ap_name\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"9a16bb30-1c16-11e9-af24-930ed507d598\",\"key\":\"ap_name\",\"negate\":false,\"type\":\"exists\",\"value\":\"exists\"}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"9a16bb30-1c16-11e9-af24-930ed507d598\",\"key\":\"client_ip\",\"negate\":false,\"params\":{\"query\":\"192.168.30.145\",\"type\":\"phrase\"},\"type\":\"phrase\",\"value\":\"192.168.30.145\"},\"query\":{\"match\":{\"client_ip\":{\"query\":\"192.168.30.145\",\"type\":\"phrase\"}}}}]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "acfdb0b0-1c4c-11e9-af24-930ed507d598",
+    "_type": "visualization",
+    "_source": {
+      "title": "state timeline",
+      "visState": "{\"title\":\"state timeline\",\"type\":\"vega\",\"params\":{\"spec\":\"{\\n  \\\"$schema\\\": \\\"https://vega.github.io/schema/vega-lite/v2.json\\\",\\n  \\\"title\\\": \\\"State machine timeline\\\",\\n  \\\"data\\\": {\\n    \\\"url\\\": {\\n      \\\"%context%\\\": true,\\n      \\\"%timefield%\\\": \\\"@timestamp\\\",\\n      \\\"index\\\": \\\"_all\\\",\\n    },\\n    \\\"format\\\": {\\\"property\\\": \\\"hits.hits\\\"}\\n  },\\n\\n  transform: [\\n    {\\n    calculate: \\\"toDate(datum._source['@timestamp'])\\\"\\n    as: \\\"time\\\"\\n    }\\n  ]\\n  \\n  \\\"mark\\\": {\\n    \\\"type\\\": \\\"trail\\\",\\n    \\\"point\\\": {\\n      \\\"filled\\\": false,\\n      \\\"size\\\": 1000\\n    },\\n    \\\"interpolate\\\":\\\"step-before\\\"\\n  },\\n  \\\"encoding\\\": {\\n    \\\"x\\\": {\\n      \\\"timeUnit\\\": \\\"yearmonthdatehoursminutesecondsmilliseconds\\\",\\n      \\\"field\\\": \\\"time\\\",\\n      \\\"type\\\": \\\"temporal\\\",\\n      \\\"axis\\\": {\\\"title\\\": false,\\n      \\\"labelAngle\\\":-45}\\n    },\\n\\n    \\\"y\\\": {\\n      \\\"field\\\": \\\"_source.to_state\\\",\\n      \\\"type\\\": \\\"ordinal\\\"\\n    }\\n    \\\"tooltip\\\": [\\n      {\\\"field\\\": \\\"_source.event_type\\\", \\\"type\\\": \\\"nominal\\\"},\\n      {\\\"field\\\": \\\"_source.client_ip\\\", \\\"type\\\": \\\"nominal\\\"}\\n      {\\\"field\\\": \\\"_source.ap_name\\\", \\\"type\\\": \\\"nominal\\\"}\\n      ]\\n    \\\"shape\\\": {\\n      \\\"field\\\": \\\"_source.event_type\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'event type'}\\n    }\\n    \\\"color\\\": {\\n      \\\"field\\\": \\\"_source.client_mac\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'Client MAC'}\\n    }\\n  }\\n}\"},\"aggs\":[]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "2815f680-1a73-11e9-9aa6-ad54477f1476",
+    "_type": "visualization",
+    "_source": {
+      "title": "Client timeline",
+      "visState": "{\"title\":\"Client timeline\",\"type\":\"vega\",\"params\":{\"spec\":\"{\\n  \\\"$schema\\\": \\\"https://vega.github.io/schema/vega-lite/v2.json\\\",\\n  \\\"title\\\": \\\"Client timeline\\\",\\n  \\\"data\\\": {\\n    \\\"url\\\": {\\n      \\\"%context%\\\": true,\\n      \\\"%timefield%\\\": \\\"@timestamp\\\",\\n      \\\"index\\\": \\\"_all\\\",\\n    },\\n    \\\"format\\\": {\\\"property\\\": \\\"hits.hits\\\"}\\n  },\\n\\n  transform: [\\n    {\\n    calculate: \\\"toDate(datum._source['@timestamp'])\\\"\\n    as: \\\"time\\\"\\n    }\\n  ]\\n  \\n  \\\"mark\\\": {\\n    \\\"type\\\": \\\"trail\\\",\\n    \\\"point\\\": {\\n      \\\"filled\\\": false,\\n      \\\"size\\\": 1000\\n    },\\n    \\\"interpolate\\\":\\\"step-before\\\"\\n  },\\n  \\\"encoding\\\": {\\n    \\\"x\\\": {\\n      \\\"timeUnit\\\": \\\"yearmonthdatehoursminutesecondsmilliseconds\\\",\\n      \\\"field\\\": \\\"time\\\",\\n      \\\"type\\\": \\\"temporal\\\",\\n      \\\"axis\\\": {\\\"title\\\": false,\\n      \\\"labelAngle\\\":-45}\\n    },\\n\\n    \\\"y\\\": {\\n      \\\"field\\\": \\\"_source.ap_name\\\",\\n      \\\"type\\\": \\\"ordinal\\\"\\n    }\\n    \\\"tooltip\\\": [\\n      {\\\"field\\\": \\\"_source.event_type\\\", \\\"type\\\": \\\"nominal\\\"},\\n      {\\\"field\\\": \\\"_source.client_ip\\\", \\\"type\\\": \\\"nominal\\\"}\\n      {\\\"field\\\": \\\"_source.to_state\\\", \\\"type\\\": \\\"nominal\\\"}\\n      ]\\n    \\\"shape\\\": {\\n      \\\"field\\\": \\\"_source.event_type\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'event type'}\\n    }\\n    \\\"color\\\": {\\n      \\\"field\\\": \\\"_source.client_mac\\\",\\n      \\\"type\\\": \\\"nominal\\\",\\n      \\\"legend\\\": { title: 'Client MAC'}\\n    }\\n  }\\n}\"},\"aggs\":[]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  }
+]
