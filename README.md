@@ -10,8 +10,8 @@ As an example of this rich data, this demo periodically export the latest traces
 
 The periodic trace export is done using several techniques available in IOS-XE:
 
- Event Manager
- TCL scripting
+* Embedded Event Manager
+* TCL scripting
 
 ## Embedded Event Manager
 Event manager is an XE feature that allows a customer to specify actions to be performed when a given event occurs.
@@ -27,7 +27,7 @@ event manager applet WirelessLogs
  action 2.0 cli command "event manager run collect_wireless_logs.tcl"
 ```
 
-## TCL script
+## TCL scripting
 
 Embedded Event Manager triggers this [TCL](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/eem/configuration/15-mt/eem-15-mt-book/eem-policy-tcl.html) script, which collects the traces since last period and uploads them to a off-box location. Collecting the traces can be a time consuming operation, but this script runs asynchronously so it has no impact on the controller operation.
 
@@ -35,6 +35,7 @@ Embedded Event Manager triggers this [TCL](https://www.cisco.com/c/en/us/td/docs
 
 Once the traces are stored in the off-box storage, Logstash processes them. The traces we're interested in are the ones relevant to the client state machine. For this type of data, the [aggregation Logstash plugin](https://www.elastic.co/guide/en/logstash/current/plugins-filters-aggregate.html) is very useful.
 
+## Sample dashboard output
 
 
 ![Dashboard](diagrams/dashboard1.png?raw=true "Dashboard")
