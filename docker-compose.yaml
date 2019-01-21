@@ -14,7 +14,8 @@ services:
         soft: -1
         hard: -1
   logstash:
-    build: logstash
+    #build: logstash
+    image: fsedano/logstash
     ports:
       - "9600:9600"
     volumes:
