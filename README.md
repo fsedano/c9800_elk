@@ -38,4 +38,6 @@ Once the traces are stored in the off-box storage, Logstash processes them. The 
 ## Sample dashboard output
 
 
-![Dashboard](diagrams/dashboard1.png?raw=true "Dashboard")
+![Dashboard 1 - Client timeline](diagrams/dashboard2.png?raw=true "Client timeline")
+
+![Dashboard 2 - AP data](diagrams/dashboard1.png?raw=true "AP Data")
