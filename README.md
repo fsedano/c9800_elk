@@ -39,7 +39,7 @@ Once the traces are stored in the off-box storage, Logstash processes them. The 
 
 ### Client timeline
 
-![Dashboard 1 - Client timeline](diagrams/dashboard2.png?raw=true "Client timeline")
+![Dashboard 1 - Client timeline](diagrams/dashboard3.png?raw=true "Client timeline")
 
 
 ### AP data
