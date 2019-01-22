@@ -105,11 +105,11 @@ proc get_lastrun {} {
 array set cli_sess [cli_session_start]
 
 ## Get latest timestamp
-set timestamp_str [get_trace_timestamp]
+#set timestamp_str [get_trace_timestamp]
 
 set cmds {}
 set filename [clock seconds]
-lappend cmds "show logging profile wireless $timestamp_str | redirect tftp://192.168.2.205/traces_$filename.log"
+lappend cmds "show logging profile wireless last 60 | redirect tftp://9.9.71.130/traces_$filename.log"
 
 set ret [run_cmd cli_sess $cmds]
-set_lastrun
+#set_lastrun

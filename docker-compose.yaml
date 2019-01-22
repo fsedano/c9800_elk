@@ -22,7 +22,7 @@ services:
       - log_pipeline:/usr/share/logstash/pipeline
       - log_app:/app
       - log_logs:/usr/share/logstash/logs
-      - ./logstash:/logstash_host
+      - /var/lib/tftpboot:/realtime_traces
 
 volumes:
   log_pipeline:
