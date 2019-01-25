@@ -14,16 +14,16 @@ services:
         soft: -1
         hard: -1
   logstash:
-    #build: logstash
-    image: fsedano/logstash
+    build: logstash
+    #image: fsedano/logstash
     ports:
       - "9600:9600"
     volumes:
       - log_pipeline:/usr/share/logstash/pipeline
       - log_app:/app
       - log_logs:/usr/share/logstash/logs
-      - /var/lib/tftpboot:/realtime_traces
-
+      - ./test_data:/realtime_traces
+      - ./logstash/logstash_data:/root
 volumes:
   log_pipeline:
   log_app:

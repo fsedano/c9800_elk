@@ -1,4 +1,5 @@
 event manager directory user policy "bootflash:/user_eem"
+file prompt quiet
 !! Copy collect_wireless_logs.tcl to bootflash:/user_eem directory
 event manager policy collect_wireless_logs.tcl type user
 event manager applet WirelessLogs

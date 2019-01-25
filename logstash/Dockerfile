@@ -12,5 +12,5 @@ COPY logstash_data/examples.txt /root/
 COPY logstash_data/*.log /root/data/
 COPY logstash_data/patterns/* /root/patterns/
 
-#ENTRYPOINT [ "sh", "/app/entrypoint.sh" ]
-ENTRYPOINT [ "/usr/share/logstash/bin/logstash", "-f", "/root/custom.conf", "-w", "1"]
+ENTRYPOINT [ "sh", "/app/entrypoint.sh" ]
+#ENTRYPOINT [ "/usr/share/logstash/bin/logstash", "-f", "/root/custom.conf", "-w", "1"]
